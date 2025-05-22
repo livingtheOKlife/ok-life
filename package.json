@@ -1,0 +1,34 @@
+{
+  "name": "oklife",
+  "version": "1.0.0",
+  "description": "social media platform with fitness and diet tracking",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "server": "nodemon server/index.js",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/livingtheOKlife/oklife.git"
+  },
+  "keywords": [
+    "social",
+    "media",
+    "fitness",
+    "diet",
+    "tracker"
+  ],
+  "author": "livingtheOKlife",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/livingtheOKlife/oklife/issues"
+  },
+  "homepage": "https://github.com/livingtheOKlife/oklife#readme",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.10"
+  }
+}
