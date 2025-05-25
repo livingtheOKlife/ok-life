@@ -1,0 +1,59 @@
+@mixin setLogo ($size) {
+
+  font-family: $font;
+  font-size: $size;
+  font-weight: 400;
+  letter-spacing: 1.16;
+  line-height: 1.32;
+  color: $dark;
+
+  @media (prefers-color-scheme: dark) {
+
+    color: $light;
+    
+  }
+
+  em {
+
+    margin-right: 2px;
+    font-family: $brand;
+    font-size: $size;
+    font-weight: 600;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: $primary;
+
+    @media (prefers-color-scheme: dark) {
+
+      color: $secondary;
+
+    }
+
+  }
+  
+  @media screen and (min-width: 768px) {
+    
+    font-size: $size * 1.08;
+    
+    em {
+      
+      font-size: $size * 1.08;
+
+    }
+    
+  }
+  
+  @media screen and (min-width: 1366px) {
+    
+    font-size: $size * 1.16;
+    
+    em {
+      
+      font-size: $size * 1.16;
+
+    }
+    
+  }
+
+}

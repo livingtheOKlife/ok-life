@@ -1,0 +1,75 @@
+#header-container {
+
+  @extend .w-100;
+  padding: 0.75rem 0.75rem 0.25rem 0.75rem;
+  
+  @media screen and (min-width: 480px) {
+    
+    padding: 0.75rem 1rem 0.25rem 1rem;
+    
+  }
+  
+  @media screen and (min-width: 768px) {
+    
+    padding: 0.75rem 1.25rem 0.25rem 1.25rem;
+    
+  }
+  
+  @media screen and (min-width: 1024px) {
+    
+    padding: 0.75rem 1.75rem 0.25rem 1.75rem;
+    
+  }
+  
+  @media screen and (min-width: 1366px) {
+    
+    padding: 1.25rem 2.25rem 0.25rem 2.25rem;
+    
+  }
+
+  #main-nav {
+
+    @extend .flex, .justify-between, .align-center;
+
+    a {
+
+      padding: 0.25rem;
+
+      #logo {
+
+        @include setLogo(18px);
+
+      }
+
+    }
+
+    .main-nav-list {
+
+      @extend .flex, .align-center, .gap-4;
+
+      .main-nav-item {
+
+        @extend .flex;
+        padding: 0.25rem;
+        color: $dark;
+        cursor: pointer;
+        
+        svg {
+          
+          font-size: 22px;
+
+        }
+
+        @media (prefers-color-scheme: dark) {
+
+          color: $light;
+          
+        }
+
+      }
+
+    }
+
+  }
+
+}

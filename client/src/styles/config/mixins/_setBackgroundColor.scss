@@ -1,0 +1,51 @@
+@mixin setBackgroundColor ($color) {
+
+  @if (lightness($color) > 70) {
+
+    background-color: $color;
+    color: $dark;
+
+    h2, h3, h4, h5, h6 {
+
+      color: $dark;
+
+    }
+
+    p, span, label, input, svg {
+
+      color: lighten($dark, 4%);
+      
+    }
+
+    input::placeholder {
+
+      color: rgb(0, 0, 0, 0.48);
+
+    }
+
+  } @else {
+
+    background-color: $color;
+    color: $light;
+
+    h2, h3, h4, h5, h6 {
+
+      color: $light;
+
+    }
+
+    p, span, label, input, svg {
+
+      color: darken($light, 4%);
+
+    }
+
+    input::placeholder {
+
+      color: rgb(255, 255, 255, 0.24);
+
+    }
+
+  }
+
+}

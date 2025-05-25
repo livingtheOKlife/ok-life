@@ -1,0 +1,36 @@
+@mixin setBrand ($size) {
+
+  font-family: $brand;
+  font-size: $size;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 1;
+  
+  em {
+    
+    margin-right: 2px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: $primary;
+  
+    @media (prefers-color-scheme: dark) {
+  
+      color: $secondary;
+  
+    }
+
+  }
+  
+  @media screen and (min-width: 768px) {
+    
+    font-size: $size * 1.08;
+    
+  }
+  
+  @media screen and (min-width: 1366px) {
+    
+    font-size: $size * 1.16;
+    
+  }
+
+}

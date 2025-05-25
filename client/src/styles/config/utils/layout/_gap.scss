@@ -1,0 +1,9 @@
+@each $i in $px {
+
+  .gap-#{$i} {
+
+    gap: #{$i}px;
+
+  }
+
+}
