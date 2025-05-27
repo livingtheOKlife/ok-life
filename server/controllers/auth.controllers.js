@@ -1,5 +1,7 @@
 import User from '../models/user.model.js'
 
+import generateToken from '../utils/generateToken.js'
+
 export const register = async (req, res) => {
   const { username, email, password } = req.body
   try {
@@ -20,6 +22,7 @@ export const register = async (req, res) => {
       password,
     })
     if (user) {
+      generateToken(res, user._id)
       res.status(201).json({
         success: true,
         message: 'User created successfully',
