@@ -74,6 +74,28 @@
 
     }
 
+    .spinner {
+      
+      .spinner-background {
+        
+        background-image: conic-gradient($primary 33%, $light 66% 100%);
+    
+        .spinner-ball {
+          
+          background-color: $primary;
+          
+        }
+    
+        .spinner-foreground {
+          
+          background: $light;
+          
+        }
+
+      }
+      
+    }
+
     h2, h3, h4, h5, h6 {
 
       color: $dark;
@@ -155,6 +177,28 @@
       background-color: $dark;
       box-shadow: hsla(220, 30%, 5%, 0.32) 0px 4px 8px 0px, hsla(220, 30%, 5%, 0.32) 0px 4px 8px -4px;
       
+    }
+
+    .spinner {
+      
+      .spinner-background {
+        
+        background-image: conic-gradient($secondary 33%, $dark 66% 100%);
+    
+        .spinner-ball {
+          
+          background-color: $secondary;
+          
+        }
+  
+        .spinner-foreground {
+          
+          background: $dark;
+          
+        }
+
+      }
+
     }
     
     h2, h3, h4, h5, h6 {
