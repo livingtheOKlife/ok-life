@@ -14,7 +14,7 @@ export const register = async (req, res) => {
     }
     if (await User.findOne({ email })) {
       res.status(400)
-      throw new Error('User already exists, try signing in...')
+      throw new Error('Account already exists, try signing in...')
     }
     const user = await User.create({
       username,
