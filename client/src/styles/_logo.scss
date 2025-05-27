@@ -1,0 +1,45 @@
+#header-container {
+
+  #logo {
+
+    font-size: 18px;
+
+    @media screen and (min-width: 768px) {
+
+      font-size: 18px * 1.08;
+      
+    }
+
+    @media screen and (min-width: 1024px) {
+
+      font-size: 18px * 1.08 * 1.08;
+      
+    }
+
+    @media screen and (min-width: 1024px) {
+
+      font-size: 18px * 1.08 * 1.08 * 1.08;
+      
+    }
+
+    em {
+
+      margin-right: 2px;
+      font-family: $brand;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      line-height: 1;
+      color: $primary;
+
+      @media (prefers-color-scheme: dark) {
+
+        color: $secondary;
+
+      }
+
+    }
+
+  }
+
+}

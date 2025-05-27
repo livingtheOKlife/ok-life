@@ -1,9 +1,11 @@
 import { Outlet } from 'react-router-dom'
 
+import HeaderContainer from './components/layout/HeaderContainer'
+
 function App() {
   return (
     <div id="App">
-      <header id="header-container">OKlife</header>
+      <HeaderContainer />
       <Outlet />
       <section id="copyright-container">
         <div id="copyright-wrapper">

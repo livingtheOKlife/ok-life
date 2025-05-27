@@ -1,0 +1,51 @@
+#copyright-container {
+
+  background-color: $dark;
+  padding: 0.25rem 0.5rem;
+  
+  #copyright-wrapper {
+    
+    @extend .flex, .justify-between, .align-center;
+    
+    * {
+      
+      font-size: 8px;
+      color: $light;
+      
+    }
+    
+    #brand {
+      
+      @extend .flex, .align-center;
+      gap: 4px;
+
+      h1 {
+
+        margin-top: -1px;
+        font-family: $brand;
+        font-weight: 300;
+        letter-spacing: 1;
+        line-height: 1;
+        
+        em {
+          
+          margin-right: 2px;
+          letter-spacing: -1px;
+          text-transform: uppercase;
+          color: $primary;
+
+          @media (prefers-color-scheme: dark) {
+
+            color: $secondary;
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

@@ -1,0 +1,9 @@
+@import './theme/font';
+@import './theme/color';
+
+@mixin theme($size, $color) {
+  
+  @include font($size);
+  @include color($color);
+
+}

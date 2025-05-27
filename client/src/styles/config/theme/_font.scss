@@ -1,0 +1,54 @@
+@mixin font($size) {
+
+  h2, h3, h4, h5, h6, p, span, label, input, input::placeholder {
+
+    font-family: $font;
+    font-weight: 400;
+    letter-spacing: 1.16px;
+    line-height: 1.32;
+
+  }
+
+  p {
+
+    font-size: $size;
+
+  }
+
+  span, label, input, input::placeholder {
+
+    font-size: $size * 1.08;
+
+  }
+
+  h6 {
+    
+    font-size: $size * 1.16;
+
+  }
+
+  h5 {
+    
+    font-size: $size * 1.16 * 1.16;
+
+  }
+
+  h4 {
+    
+    font-size: $size * 1.16 * 1.16 * 1.16;
+
+  }
+
+  h3 {
+    
+    font-size: $size * 1.16 * 1.16 * 1.16 * 1.16;
+
+  }
+
+  h2 {
+    
+    font-size: $size * 1.16 * 1.16 * 1.16 * 1.16 * 1.16;
+
+  }
+
+}
