@@ -2,6 +2,8 @@ import { Outlet } from 'react-router-dom'
 
 import HeaderContainer from './components/layout/HeaderContainer'
 
+import Alert from './components/Alert'
+
 function App() {
   return (
     <div id="App">
@@ -16,6 +18,7 @@ function App() {
           <span>All rights reserved.</span>
         </div>
       </section>
+      <Alert />
     </div>
   )
 }
