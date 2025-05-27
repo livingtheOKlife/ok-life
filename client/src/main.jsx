@@ -10,12 +10,14 @@ import App from './App.jsx'
 import store from './store.js'
 
 import HomePage from './pages/HomePage.jsx'
+import RegisterPage from './pages/RegisterPage.jsx'
 import PageNotFoundPage from './pages/PageNotFoundPage.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index path='/' element={<HomePage />} />
+      <Route path='/register' element={<RegisterPage />} />
       <Route path='/page-not-found' element={<PageNotFoundPage />} />
       <Route path='/*' element={<Navigate to="/page-not-found" replace />} />
     </Route>

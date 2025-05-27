@@ -3,3 +3,17 @@
 @import './styles/layout';
 @import './styles/logo';
 @import './styles/copyright';
+
+form .css-1oljykh-MuiDivider-root {
+
+  &::before, &::after {
+
+    @media (prefers-color-scheme: dark) {
+
+      border-top: thin solid rgb(255, 255, 255, 0.12);
+      
+    }
+    
+  }
+  
+}
