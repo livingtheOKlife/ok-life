@@ -1,6 +1,6 @@
 @mixin font($size) {
 
-  h2, h3, h4, h5, h6, p, span, label, input, input::placeholder {
+  h2, h3, h4, h5, h6, p, a, span, label, input, input::placeholder {
 
     font-family: $font;
     font-weight: 400;
@@ -9,9 +9,21 @@
 
   }
 
-  p {
+  p, p a {
 
     font-size: $size;
+
+  }
+
+  a {
+
+    transition: all 0.08s ease-in-out;
+
+    &:hover {
+
+      font-weight: 500;
+
+    }
 
   }
 
