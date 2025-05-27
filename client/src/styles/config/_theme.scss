@@ -1,9 +1,11 @@
 @import './theme/font';
 @import './theme/color';
+@import './theme/transition';
 
-@mixin theme($size, $color) {
+@mixin theme($size, $color, $time) {
   
   @include font($size);
   @include color($color);
+  @include transition($time);
 
 }

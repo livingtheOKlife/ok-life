@@ -1,0 +1,33 @@
+input {
+
+  @extend .w-100;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+
+}
+
+.icon-input {
+
+  @extend .w-100;
+  position: relative;
+
+  .input-btn {
+
+    @extend .flex, .align-center, .h-100;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 1rem;
+    border-radius: 0 6px 6px 0;
+    background-color: rgb(0, 0, 0, 0);
+    transition: all 0.08s ease-in-out;
+    
+    svg {
+
+      font-size: 14px;
+
+    }
+
+  }
+
+}

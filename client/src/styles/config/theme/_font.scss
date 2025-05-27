@@ -1,23 +1,21 @@
 @mixin font($size) {
 
-  h2, h3, h4, h5, h6, p, a, span, label, input, input::placeholder {
+  h2, h3, h4, h5, h6, p, a, span, label, input, input::placeholder, button {
 
     font-family: $font;
     font-weight: 400;
-    letter-spacing: 1.04px;
+    letter-spacing: 1.04;
     line-height: 1.32;
 
   }
 
-  p, p a {
+  p, p a, label {
 
     font-size: $size;
 
   }
 
   a {
-
-    transition: all 0.08s ease-in-out;
 
     &:hover {
 
@@ -27,9 +25,22 @@
 
   }
 
-  span, label, input, input::placeholder {
+  button {
+
+    font-size: 12px;
+    text-transform: none;
+
+  }
+
+  span, input, input::placeholder {
 
     font-size: $size * 1.08;
+
+  }
+
+  .input-error {
+
+    font-size: 8px;
 
   }
 

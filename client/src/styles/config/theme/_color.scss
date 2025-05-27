@@ -1,5 +1,67 @@
 @mixin color($color) {
 
+  #alert-zeta {
+
+    &.error {
+
+      .alert-icon {
+
+        color: $red;
+
+      }
+
+      .alert-progress-bg {
+    
+        .alert-progress-bar {
+    
+          background-color: $red;
+    
+        }
+    
+      }
+
+    }
+
+    &.success {
+
+      .alert-icon {
+
+        color: $green;
+
+      }
+
+      .alert-progress-bg {
+    
+        .alert-progress-bar {
+    
+          background-color: $green;
+    
+        }
+    
+      }
+
+    }
+  
+  }
+
+  .input-error {
+
+    color: $red;
+
+  }
+
+  button:not(.input-btn, .o-auth, .alert-btn) {
+
+    color: $light;
+
+    svg {
+      
+      color: $light;
+
+    }
+
+  }
+
   @if (lightness($color) > 70) {
 
     background-color: $color;
@@ -24,14 +86,118 @@
       
     }
 
+    input {
+      
+      border: 1px solid darken($light, 8%);
+      background-color: darken($light, 1%);
+
+    }
+
     input::placeholder {
 
-      color: rgb(0, 0, 0, 0.48);
+      color: rgb(0, 0, 0, 0.32);
+
+    }
+
+    button:not(.input-btn, .o-auth, .alert-btn) {
+
+      background-color: $primary;
+
+    }
+
+    .o-auth {
+
+      border: 1px solid darken($light, 8%);
+      background-color: darken($light, 1%);
+      color: $dark;
 
     }
     
     a {
+      
+      color: $primary;
+      
+      @media (prefers-color-scheme: dark) {
+        
+        color: $secondary;
+        
+      }
+      
+    }
 
+    #alert-zeta {
+      
+      border: 1px solid darken($light, 8%);
+      background-color: darken($light, 4%);
+      box-shadow: hsla(220, 30%, 5%, 0.04) 0px 4px 8px 0px, hsla(220, 30%, 5%, 0.04) 0px 4px 8px -4px;
+
+      .alert-progress-bg {
+        
+        background-color: rgb(0, 0, 0, 0.08);
+        
+      }
+
+      .alert-btn-icon {
+
+        color: $dark;
+
+      }
+
+    }
+    
+  } @else {
+    
+    background-color: $color;
+    color: $light;
+    
+    .card {
+      
+      background-color: $dark;
+      box-shadow: hsla(220, 30%, 5%, 0.32) 0px 4px 8px 0px, hsla(220, 30%, 5%, 0.32) 0px 4px 8px -4px;
+      
+    }
+    
+    h2, h3, h4, h5, h6 {
+      
+      color: $light;
+      
+    }
+    
+    p, span, label, input, svg {
+
+      color: darken($light, 4%);
+      
+    }
+    
+    input {
+      
+      border: 1px solid rgb(255, 255, 255, 0.04);
+      background-color: lighten($dark, 1%);
+      
+    }
+    
+    input::placeholder {
+      
+      color: rgb(255, 255, 255, 0.24);
+      
+    }
+
+    button:not(.input-btn, .o-auth, .alert-btn) {
+
+      background-color: $secondary;
+
+    }
+
+    .o-auth {
+
+      border: 1px solid rgb(255, 255, 255, 0.04);
+      background-color: lighten($dark, 1%);
+      color: $light;
+
+    }
+    
+    a {
+      
       color: $primary;
 
       @media (prefers-color-scheme: dark) {
@@ -42,44 +208,22 @@
 
     }
 
-  } @else {
+    #alert-zeta {
+      
+      border: 1px solid rgb(255, 255, 255, 0.04);
+      background-color: lighten($dark, 3%);
+      box-shadow: hsla(220, 30%, 5%, 0.32) 0px 4px 8px 0px, hsla(220, 30%, 5%, 0.32) 0px 4px 8px -4px;
 
-    background-color: $color;
-    color: $light;
-
-    .card {
-
-      background-color: $dark;
-      box-shadow: hsla(220, 30%, 5%, 0.24) 0px 4px 8px 0px, hsla(220, 30%, 5%, 0.24) 0px 4px 8px -4px;
-
-    }
-
-    h2, h3, h4, h5, h6 {
-
-      color: $light;
-
-    }
-
-    p, span, label, input, svg {
-
-      color: darken($light, 4%);
-
-    }
-
-    input::placeholder {
-
-      color: rgb(255, 255, 255, 0.24);
-
-    }
-    
-    a {
-
-      color: $primary;
-
-      @media (prefers-color-scheme: dark) {
-
-        color: $secondary;
+      .alert-progress-bg {
         
+        background-color: rgb(0, 0, 0, 0.16);
+        
+      }
+
+      .alert-btn-icon {
+
+        color: $light;
+
       }
 
     }

@@ -1,0 +1,15 @@
+@mixin transition($time) {
+
+  button {
+
+    transition: all $time ease-in-out;
+
+  }
+
+  a {
+
+    transition: all $time ease-in-out;
+
+  }
+
+}
