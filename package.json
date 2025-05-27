@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/livingtheOKlife/oklife.git"
+    "url": "git+https://github.com/livingtheOKlife/ok-life.git"
   },
   "keywords": [
     "social",
@@ -24,9 +24,9 @@
   "author": "livingtheOKlife",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/livingtheOKlife/oklife/issues"
+    "url": "https://github.com/livingtheOKlife/ok-life/issues"
   },
-  "homepage": "https://github.com/livingtheOKlife/oklife#readme",
+  "homepage": "https://github.com/livingtheOKlife/ok-life#readme",
   "devDependencies": {
     "concurrently": "^9.1.2",
     "nodemon": "^3.1.10"
