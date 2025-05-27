@@ -5,6 +5,13 @@
     background-color: $color;
     color: $dark;
 
+    .card {
+
+      background-color: $light;
+      box-shadow: hsla(220, 30%, 5%, 0.04) 0px 4px 8px 0px, hsla(220, 30%, 5%, 0.04) 0px 4px 8px -4px;
+
+    }
+
     h2, h3, h4, h5, h6 {
 
       color: $dark;
@@ -40,6 +47,13 @@
     background-color: $color;
     color: $light;
 
+    .card {
+
+      background-color: $dark;
+      box-shadow: hsla(220, 30%, 5%, 0.24) 0px 4px 8px 0px, hsla(220, 30%, 5%, 0.24) 0px 4px 8px -4px;
+
+    }
+
     h2, h3, h4, h5, h6 {
 
       color: $light;
@@ -55,6 +69,18 @@
     input::placeholder {
 
       color: rgb(255, 255, 255, 0.24);
+
+    }
+    
+    a {
+
+      color: $primary;
+
+      @media (prefers-color-scheme: dark) {
+
+        color: $secondary;
+        
+      }
 
     }
 
