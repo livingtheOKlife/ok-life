@@ -17,6 +17,9 @@ import FormWidget from '../components/shared/forms/FormWidget'
 import FormControl from '../components/shared/forms/FormControl'
 import Spinner from '../components/shared/Spinner'
 
+import googleLogo from '../assets/google-icon.png'
+import facebookLogo from '../assets/facebook-icon.png'
+
 function RegisterPage() {
   const { userInfo } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
@@ -105,7 +108,7 @@ function RegisterPage() {
         <FormControl>
           <FormLabel style={{ width: 'calc(100% - 1.75rem)' }}>Password</FormLabel>
           <div className="icon-input">
-            <input type={showPassword ? 'text' : 'password'} className={errors.password ? 'invalid' : ''} {
+            <input type={showPassword ? 'text' : 'password'} placeholder='Choose a password' {
               ...register('password', {
                 required: { value: true, message: 'Please enter a password' },
                 minLength: { value: 6, message: 'Password must be at least 6 characters' },
@@ -115,7 +118,7 @@ function RegisterPage() {
                   message: 'Passwords must contain at least one uppercase, and one lowercase letter, one number, and one special character.'
                 }
               })
-            } placeholder='Choose a password' />
+            } />
             <button type="button" className='input-btn' onClick={() => setShowPassword(!showPassword)}>
               {
                 showPassword ? <FaEyeSlash /> : <FaEye />
@@ -129,12 +132,12 @@ function RegisterPage() {
         <FormControl>
           <FormLabel style={{ width: 'calc(100% - 1.75rem)' }}>Confirm Password</FormLabel>
           <div className="icon-input">
-            <input type={showConfirmPassword ? 'text' : 'password'} className={errors.confirmPassword ? 'invalid' : ''} {
+            <input type={showConfirmPassword ? 'text' : 'password'} placeholder='Confirm your password' {
               ...register('confirmPassword', {
                 required: { value: true, message: 'Please confirm your password' },
                 validate: (value) => value === getValues('password') || 'Passwords do not match'
               })
-            } placeholder='Confirm your password' />
+            } />
             <button type="button" className='input-btn' onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
               {
                 showConfirmPassword ? <FaEyeSlash /> : <FaEye />
@@ -153,6 +156,14 @@ function RegisterPage() {
         </FormControl>
         <Divider>or</Divider>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          <Button type='button' className='o-auth' style={{ display: 'flex', alignItems: 'center', gap: '0.5rem',  padding: '0.5rem 1rem' }}>
+            <img src={googleLogo} style={{ height: '18px', width: '18px' }} />
+            Sign in with Google
+          </Button>
+          <Button type='button' className='o-auth' style={{ display: 'flex', alignItems: 'center', gap: '0.5rem',  padding: '0.5rem 1rem' }}>
+            <img src={facebookLogo} style={{ height: '18px', width: '18px' }} />
+            Sign in with Facebook
+          </Button>
           <span style={{ margin: '0.75rem 0 -0.25rem 0', fontSize: '10px', textAlign: 'center' }}>Already have an account with us?</span>
           <Link to='/login' style={{ padding: '0.25rem', fontSize: '10px', textAlign: 'center' }}>Sign in instead</Link>
         </Box>

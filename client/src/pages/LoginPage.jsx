@@ -80,7 +80,7 @@ function LoginPage() {
         <FormControl>
           <FormLabel component='label' style={{ width: 'calc(100% - 1.75rem)' }}>Password</FormLabel>
           <div className="icon-input">
-            <input type={showPassword ? 'text' : 'password'} className={errors.password ? 'invalid' : ''} {
+            <input type={showPassword ? 'text' : 'password'} placeholder='Enter your password'{
               ...register('password', {
                 required: { value: true, message: 'Please enter a password' },
                 minLength: { value: 6, message: 'Password must be at least 6 characters' },
@@ -90,7 +90,7 @@ function LoginPage() {
                   message: 'Passwords must contain at least one uppercase, and one lowercase letter, one number, and one special character.'
                 }
               })
-            } placeholder='Choose a password' />
+            }  />
             <button type="button" className='input-btn' onClick={() => setShowPassword(!showPassword)}>
               {
                 showPassword ? <FaEyeSlash /> : <FaEye />

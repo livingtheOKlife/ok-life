@@ -1,7 +1,7 @@
 #App {
 
   @extend .flex, .justify-between;
-  @include theme(12px, darken($light, 4%), 0.08s);
+  @include theme(12px, darken($light, 12%), 0.08s);
   flex-direction: column;
   height: 100dvh;
   max-height: 100dvh;
