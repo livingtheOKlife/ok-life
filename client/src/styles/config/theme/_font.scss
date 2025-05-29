@@ -4,8 +4,19 @@
 
     font-family: $font;
     font-weight: 400;
-    letter-spacing: 1.04;
     line-height: 1.32;
+
+  }
+
+  h2, h3, h4 {
+    
+    letter-spacing: 0;
+
+  }
+
+  h5, h6, p, a, span, label, input, input::placeholder, button {
+
+    letter-spacing: 1;
 
   }
 
