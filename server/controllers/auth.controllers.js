@@ -50,3 +50,29 @@ export const logout = async (req, res) => {
     throw new Error(error)
   }
 }
+
+export const login = async (req, res) => {
+  const { email, password } = req.body
+  try {
+    if (!email || !password) {
+      throw new Error('All fields are required')
+    }
+    const user = await User.findOne({ email })
+    if (user && (await user.matchPassword(password))) {
+      res.status(200).json({
+        success: true,
+        message: 'User logged in successfully',
+        user: {
+          ...user._doc,
+          password: undefined,
+        },
+      })
+    } else {
+      res.status(401)
+      throw new Error('Invalid email or password')
+    }
+  } catch (error) {
+    res.status(400)
+    throw new Error(error)
+  }
+}
