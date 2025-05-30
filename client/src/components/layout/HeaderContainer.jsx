@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { useLogoutMutation } from '../../slices/authApiSlice'
 
-import { FaDoorOpen, FaUser } from 'react-icons/fa'
+import { TbDoorExit, TbUser } from 'react-icons/tb'
 
 import AlertContext from '../../context/alert/AlertContext'
 import { clearCredentials } from '../../slices/authSlice'
@@ -31,15 +31,15 @@ function HeaderContainer() {
         <Link to='/' style={{ padding: '0.25rem' }}>
           <span id="logo"><em>OK</em>life</span>
         </Link>
-        <ul className="main-nav-list" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <ul className="main-nav-list" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           {
             userInfo &&
               <li className="main-nav-item" style={{ padding: '0.25rem', cursor: 'pointer' }} onClick={logoutHandler}>
-                <FaDoorOpen style={{ fontSize: '22px' }} />
+                <TbDoorExit style={{ fontSize: '1.75rem' }} />
               </li>
           }
           <li className="main-nav-item" style={{ padding: '0.25rem', cursor: 'pointer' }} onClick={() => navigate('/login')}>
-            <FaUser style={{ fontSize: '22px' }} />
+            <TbUser style={{ fontSize: '1.75rem' }} />
           </li>
         </ul>
       </nav>
