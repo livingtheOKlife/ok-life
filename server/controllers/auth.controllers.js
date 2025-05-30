@@ -1,5 +1,3 @@
-import emailTransporter from '../config/email.config.js'
-
 import User from '../models/user.model.js'
 
 import generateToken from '../utils/generateToken.js'
@@ -25,15 +23,6 @@ export const register = async (req, res) => {
     })
     if (user) {
       generateToken(res, user._id)
-      const token = Math.floor(100000 + Math.random() * 900000).toString()
-      await emailTransporter.sendMail({
-        from: process.env.EMAIL_ADDRESS,
-        to: email,
-        subject: 'Verify your email',
-        html: `
-          <span>Your verification token is ${token}</span>
-        `,
-      })
       res.status(201).json({
         success: true,
         message: 'User created successfully',
