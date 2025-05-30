@@ -24,6 +24,12 @@ const userSchema = mongoose.Schema(
       min: 6,
       max: 50,
     },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    verificationToken: String,
+    verificationExpiry: Date,
   },
   { timestamps: true }
 )

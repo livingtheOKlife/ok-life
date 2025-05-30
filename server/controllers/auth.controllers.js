@@ -1,9 +1,12 @@
+import emailTransporter from '../config/email.config.js'
+
 import User from '../models/user.model.js'
 
 import generateToken from '../utils/generateToken.js'
 
 export const register = async (req, res) => {
   const { username, email, password } = req.body
+  const token = Math.floor(100000 + Math.random() * 900000).toString()
   try {
     if (!username || !email || !password) {
       throw new Error('All fields are required')
@@ -20,9 +23,19 @@ export const register = async (req, res) => {
       username,
       email,
       password,
+      verificationToken: token,
+      verificationExpiry: Date.now() + 24 * 60 * 60 * 1000,
     })
     if (user) {
       generateToken(res, user._id)
+      await emailTransporter.sendMail({
+        from: process.env.EMAIL_ADDRESS,
+        to: email,
+        subject: 'Verify your email',
+        html: `
+          <span>Your verification token is ${token}</span>
+        `,
+      })
       res.status(201).json({
         success: true,
         message: 'User created successfully',
