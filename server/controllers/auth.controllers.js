@@ -105,9 +105,55 @@ export const verify = async (req, res) => {
       user.verificationToken = undefined
       user.verificationExpiry = undefined
       await user.save()
+      await emailTransporter.sendMail({
+        from: process.env.EMAIL_ADDRESS,
+        to: email,
+        subject: `Welcome ${user.username}`,
+        html: `
+          <span>Thank you for joining the OKlife!</span>
+        `,
+      })
       res.status(200).json({
         success: true,
         message: 'Email successfully verified',
+        user: {
+          ...user._doc,
+          password: undefined,
+        },
+      })
+    }
+  } catch (error) {
+    res.status(400)
+    throw new Error(error)
+  }
+}
+
+export const resend = async (req, res) => {
+  const { email } = req.body
+  const token = Math.floor(100000 + Math.random() * 900000).toString()
+  try {
+    const user = await User.findOne({ email })
+    if (!user) {
+      res.status(400)
+      throw new Error('User not found')
+    } else if (user.isVerified === true) {
+      res.status(400)
+      throw new Error(`${user.username} is already a verified account`)
+    } else {
+      user.verificationToken = token
+      user.verificationExpiry = Date.now() + 24 * 60 * 60 * 1000
+      await user.save()
+      await emailTransporter.sendMail({
+        from: process.env.EMAIL_ADDRESS,
+        to: email,
+        subject: 'Verify your email',
+        html: `
+          <span>Your verification token is ${token}</span>
+        `,
+      })
+      res.status(200).json({
+        success: true,
+        message: 'Verification token sent successfully',
         user: {
           ...user._doc,
           password: undefined,
