@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Box, Button, Divider } from '@mui/material'
 
 import { useVerifyMutation } from '../slices/authApiSlice'
+import { useResendMutation } from '../slices/authApiSlice'
 import { setCredentials } from '../slices/authSlice'
 
 import AlertContext from '../context/alert/AlertContext'
@@ -24,6 +25,7 @@ function VerifyEmailPage() {
   }, [navigate, userInfo])
   const [code, setCode] = useState(['', '', '', '', '', ''])
   const inputRefs = useRef([])
+  const [ resend ] = useResendMutation()
   const [ verify, { isLoading } ] = useVerifyMutation()
   const onChange = (i, value) => {
 		const newCode = [...code]
@@ -61,6 +63,17 @@ function VerifyEmailPage() {
 			setAlertActive(error.data.message, 'error')
 		}
 	}
+	const onResend = async (e) => {
+		e.preventDefault()
+		try {
+			const res = await resend({ email: userInfo.user.email }).unwrap()
+			dispatch(setCredentials({...res}))
+			setAlertActive('A new code was sent to you', 'success')
+			navigate('/verify')
+		} catch (error) {
+			setAlertActive(error.data.message, 'error')
+		}
+	}
   useEffect(() => {
 		if (code.every((digit) => digit !== "")) {
 			onSubmit(new Event("submit"));
@@ -91,17 +104,17 @@ function VerifyEmailPage() {
         <FormControl>
           {
             isLoading ? <Spinner />
-            : <Button type='submit' fullWidth variant='contained' style={{ padding: '0.75rem 1rem', margin: '0.5rem 0', '&:hover': { scale: '1.04' } }}>Get verified</Button>
+						: <Button type='submit' fullWidth variant='contained' style={{ padding: '0.75rem 1rem', margin: '0.5rem 0', '&:hover': { scale: '1.04' } }}>Get verified</Button>
           }
-        </FormControl>
+					</FormControl>
         <FormControl>
           <Link to='/' style={{ padding: '0.5rem', fontSize: '12px' }}>Skip for now</Link>
         </FormControl>
-        {/* <Divider>or</Divider>
+        <Divider>or</Divider>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <span style={{ maxWidth: '320px', margin: '0.75rem auto -0.25rem auto', fontSize: '10px', textAlign: 'center' }}>If you didn't receive an email, or your verification code has expired, click the link below...</span>
-          <button className='ghost-btn' style={{ padding: '0.5rem', fontSize: '12px', textAlign: 'center' }}>Resend Email</button>
-        </Box> */}
+          <button type='button' className='ghost-btn' style={{ padding: '0.5rem', fontSize: '12px', textAlign: 'center' }} onClick={onResend}>Resend Email</button>
+        </Box>
       </FormWidget>
     </MainContainer>
   )

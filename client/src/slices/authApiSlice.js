@@ -31,6 +31,13 @@ export const authApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    resend: builder.mutation({
+      query: (data) => ({
+        url: `${AUTH_URL}/resend`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 })
 
@@ -39,4 +46,5 @@ export const {
   useLogoutMutation,
   useLoginMutation,
   useVerifyMutation,
+  useResendMutation,
 } = authApiSlice
