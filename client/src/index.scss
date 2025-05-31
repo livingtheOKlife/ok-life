@@ -17,3 +17,33 @@ form .css-1oljykh-MuiDivider-root {
   }
   
 }
+
+#main-container {
+
+  &.verify-page {
+
+    .ghost-btn {
+
+      align-self: center;
+      background-color: $light;
+      color: $primary;
+      transition: all 0.08s ease-in-out;
+
+      &:hover {
+
+        font-weight: 500;
+
+      }
+
+      @media (prefers-color-scheme: dark) {
+
+        background-color: $dark;
+        color: $secondary;
+        
+      }
+
+    }
+
+  }
+
+}

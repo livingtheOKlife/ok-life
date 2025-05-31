@@ -24,9 +24,6 @@ function RegisterPage() {
   const { userInfo } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  useEffect(() => {
-    userInfo && navigate('/')
-  }, [navigate, userInfo])
   const { setAlertActive } = useContext(AlertContext)
   const [createAccount, { isLoading }] = useCreateAccountMutation()
   const {
@@ -57,7 +54,7 @@ function RegisterPage() {
         }).unwrap()
         dispatch(setCredentials({...res}))
         setAlertActive(`Welcome, ${getValues('username')}`, 'success')
-        navigate('/')
+        navigate('/verify')
       }
     } catch (error) {
       setAlertActive(error.data.message, 'error')

@@ -12,6 +12,7 @@ import store from './store.js'
 import HomePage from './pages/HomePage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
+import VerifyEmailPage from './pages/VerifyEmailPage.jsx'
 import PageNotFoundPage from './pages/PageNotFoundPage.jsx'
 
 const router = createBrowserRouter(
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route index path='/' element={<HomePage />} />
       <Route path='/register' element={<RegisterPage />} />
       <Route path='/login' element={<LoginPage />} />
+      <Route path='/verify' element={<VerifyEmailPage />} />
       <Route path='/page-not-found' element={<PageNotFoundPage />} />
       <Route path='/*' element={<Navigate to="/page-not-found" replace />} />
     </Route>
