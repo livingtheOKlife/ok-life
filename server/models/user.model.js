@@ -28,6 +28,18 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    firstName: {
+      type: String,
+      min: 2,
+      max: 50,
+      trim: true,
+    },
+    lastName: {
+      type: String,
+      min: 2,
+      max: 50,
+      trim: true,
+    },
     verificationToken: String,
     verificationExpiry: Date,
     resetToken: String,
