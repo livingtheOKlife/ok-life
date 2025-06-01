@@ -30,6 +30,8 @@ const userSchema = mongoose.Schema(
     },
     verificationToken: String,
     verificationExpiry: Date,
+    resetToken: String,
+    resetExpiry: Date,
   },
   { timestamps: true }
 )

@@ -1,8 +1,12 @@
+import crypto from 'crypto'
+
 import emailTransporter from '../config/email.config.js'
 
 import User from '../models/user.model.js'
 
 import generateToken from '../utils/generateToken.js'
+
+const CLIENT_URL = process.env.CLIENT_URL
 
 export const register = async (req, res) => {
   const { username, email, password } = req.body
@@ -158,6 +162,38 @@ export const resend = async (req, res) => {
           ...user._doc,
           password: undefined,
         },
+      })
+    }
+  } catch (error) {
+    res.status(400)
+    throw new Error(error)
+  }
+}
+
+export const forgotPassword = async (req, res) => {
+  const { email } = req.body
+  try {
+    const user = await User.findOne({ email })
+    if (!user) {
+      res.status(404)
+      throw new Error('User not found')
+    } else {
+      const resetToken = crypto.randomBytes(20).toString('hex')
+      const resetExpiry = Date.now() + 1 * 60 * 60 * 1000
+      user.resetToken = resetToken
+      user.resetExpiry = resetExpiry
+      await user.save()
+      await emailTransporter.sendMail({
+        from: process.env.EMAIL_ADDRESS,
+        to: email,
+        subject: 'Reset your password',
+        html: `
+          <a href="${CLIENT_URL}reset-password/${resetToken}">Reset your password</a>
+        `,
+      })
+      res.status(200).json({
+        success: true,
+        message: 'Password reset link sent to your email',
       })
     }
   } catch (error) {
