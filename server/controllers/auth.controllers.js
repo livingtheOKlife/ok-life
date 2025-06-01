@@ -201,3 +201,40 @@ export const forgotPassword = async (req, res) => {
     throw new Error(error)
   }
 }
+
+export const resetPassword = async (req, res) => {
+  const { token, password } = req.body
+  try {
+    const user = await User.findOne({ resetToken: token })
+    if (!user || user.resetToken === undefined) {
+      res.status(400)
+      throw new Error('Invalid user data')
+    } else {
+      user.password = password
+      user.resetToken = undefined
+      user.resetExpiry = undefined
+      await user.save()
+      generateToken(res, user._id)
+      await emailTransporter.sendMail({
+        from: process.env.EMAIL_ADDRESS,
+        to: user.email,
+        subject: 'Password reset successful',
+        html: `
+          <span>Your password was reset successfully</span>
+        `,
+      })
+      res.status(200).json({
+        success: true,
+        message: 'Password reset successful',
+        user: {
+          ...user._doc,
+          password: undefined,
+        },
+      })
+    }
+  } catch (error) {
+    res.status(400)
+    console.log(error)
+    throw new Error(error)
+  }
+}
