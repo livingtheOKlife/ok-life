@@ -6,6 +6,7 @@ import connectDB from './config/database.config.js'
 import { notFound, errorHandler } from './middleware/error.middleware.js'
 
 import authRoutes from './routes/auth.routes.js'
+import userRoutes from './routes/user.routes.js'
 
 dotenv.config()
 
@@ -17,6 +18,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/api/auth', authRoutes)
+app.use('/api/user', userRoutes)
 
 app.get('/', () => console.log('Server is ready'))
 
