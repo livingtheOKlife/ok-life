@@ -102,6 +102,9 @@ function LoginPage() {
           }
         </FormControl>
         <FormControl>
+          <Link to='/forgot-password' style={{ padding: '0.25rem', fontSize: '10px' }}>Forgot password</Link>
+        </FormControl>
+        <FormControl>
           {
             isLoading ? <Spinner />
             : <Button type='submit' fullWidth variant='contained' style={{ padding: '0.75rem 1rem', margin: '0.5rem 0', '&:hover': { scale: '1.04' } }}>Sign in</Button>
