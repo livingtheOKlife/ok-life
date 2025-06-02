@@ -69,7 +69,7 @@ function VerifyEmailPage() {
 			const res = await resend({ email: userInfo.user.email }).unwrap()
 			dispatch(setCredentials({...res}))
 			setAlertActive('A new code was sent to you', 'success')
-			navigate('/verify')
+			navigate('/user-details')
 		} catch (error) {
 			setAlertActive(error.data.message, 'error')
 		}
@@ -108,7 +108,7 @@ function VerifyEmailPage() {
           }
 					</FormControl>
         <FormControl>
-          <Link to='/' style={{ padding: '0.5rem', fontSize: '12px' }}>Skip for now</Link>
+          <Link to='/user-details' style={{ padding: '0.5rem', fontSize: '12px' }}>Skip for now</Link>
         </FormControl>
         <Divider>or</Divider>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>

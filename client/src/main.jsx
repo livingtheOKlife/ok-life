@@ -11,6 +11,7 @@ import store from './store.js'
 
 import HomePage from './pages/HomePage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
+import UserDetailsPage from './pages/UserDetailsPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import VerifyEmailPage from './pages/VerifyEmailPage.jsx'
 import ForgotPasswordPage from './pages/ForgotPasswordPage.jsx'
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
     <Route path='/' element={<App />}>
       <Route index path='/' element={<HomePage />} />
       <Route path='/register' element={<RegisterPage />} />
+      <Route path='/user-details/:token' element={<UserDetailsPage />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/verify' element={<VerifyEmailPage />} />
       <Route path='/forgot-password' element={<ForgotPasswordPage />} />
