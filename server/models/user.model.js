@@ -40,6 +40,10 @@ const userSchema = mongoose.Schema(
       max: 50,
       trim: true,
     },
+    profilePicture: {
+      type: String,
+      default: '',
+    },
     dateOfBirth: Date,
     verificationToken: String,
     verificationExpiry: Date,
