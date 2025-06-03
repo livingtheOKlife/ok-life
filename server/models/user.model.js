@@ -44,6 +44,10 @@ const userSchema = mongoose.Schema(
       type: String,
       default: '',
     },
+    bannerPicture: {
+      type: String,
+      default: '',
+    },
     dateOfBirth: Date,
     verificationToken: String,
     verificationExpiry: Date,

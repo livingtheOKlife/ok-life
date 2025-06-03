@@ -1,10 +1,11 @@
 import express from 'express'
 
-import upload from '../middleware/upload-middleware.js'
+import upload from '../middleware/upload.middleware.js'
 
 import {
   getUser,
   updateUser,
+  uploadBannerPicture,
   uploadProfilePicture,
 } from '../controllers/user.controllers.js'
 
@@ -16,6 +17,11 @@ router.put(
   '/upload-profile-picture/:userId',
   upload.single('profilePicture'),
   uploadProfilePicture
+)
+router.put(
+  '/upload-banner-picture/:userId',
+  upload.single('bannerPicture'),
+  uploadBannerPicture
 )
 
 export default router

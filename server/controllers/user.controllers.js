@@ -79,3 +79,30 @@ export const uploadProfilePicture = async (req, res) => {
     throw new Error(error)
   }
 }
+
+export const uploadBannerPicture = async (req, res) => {
+  const { userId } = req.params
+  const { filename } = req.file
+  try {
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { bannerPicture: generateFileUrl(filename) },
+      { new: true }
+    )
+    if (!user) {
+      res.status(404)
+      throw new Error('User not found')
+    }
+    res.status(200).json({
+      success: true,
+      message: 'Banner picture uploaded successfully',
+      user: {
+        ...user._doc,
+        password: undefined,
+      },
+    })
+  } catch (error) {
+    res.status(400)
+    throw new Error(error)
+  }
+}
