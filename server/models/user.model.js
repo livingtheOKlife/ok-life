@@ -60,6 +60,12 @@ const userSchema = mongoose.Schema(
         ref: 'User',
       },
     ],
+    blockedList: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
     dateOfBirth: Date,
     verificationToken: String,
     verificationExpiry: Date,
