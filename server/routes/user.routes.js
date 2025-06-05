@@ -3,6 +3,7 @@ import express from 'express'
 import upload from '../middleware/upload.middleware.js'
 
 import {
+  blockUser,
   followUser,
   getUser,
   unfollowUser,
@@ -27,5 +28,6 @@ router.put(
 )
 router.post('/follow-user/:userId', followUser)
 router.post('/unfollow-user/:userId', unfollowUser)
+router.post('/block-user/:userId', blockUser)
 
 export default router

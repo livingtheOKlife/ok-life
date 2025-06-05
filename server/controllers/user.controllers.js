@@ -179,7 +179,44 @@ export const unfollowUser = async (req, res) => {
   }
 }
 
-// export const blockUser = async (req, res) => {}
+export const blockUser = async (req, res) => {
+  const { userId } = req.params
+  const { _id } = req.body
+  try {
+    if (userId === _id) {
+      res.status(500)
+      throw new Error('You cannot block yourself')
+    }
+    const userToBlock = await User.findById(userId)
+    const userLoggedIn = await User.findById(_id)
+    if (!userToBlock) {
+      res.status(404)
+      throw new Error('User not found')
+    } else if (!userLoggedIn) {
+      res.status(400)
+      throw new Error('You must be logged in to block a user')
+    } else if (userLoggedIn.blockedList.includes(userId)) {
+      res.status(500)
+      throw new Error('You already blocked this user')
+    }
+    userLoggedIn.blockedList.push(userId)
+    userLoggedIn.following = userLoggedIn.following.filter(
+      (id) => id.toString() !== userId
+    )
+    userToBlock.followers = userToBlock.followers.filter(
+      (id) => id.toString() !== _id
+    )
+    await userToBlock.save()
+    await userLoggedIn.save()
+    res.status(200).json({
+      success: true,
+      message: 'User blocked successfully',
+    })
+  } catch (error) {
+    res.status(400)
+    throw new Error(error)
+  }
+}
 
 // export const unblockUser = async (req, res) => {}
 
