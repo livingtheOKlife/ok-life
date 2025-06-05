@@ -3,6 +3,7 @@ import express from 'express'
 import upload from '../middleware/upload.middleware.js'
 
 import {
+  followUser,
   getUser,
   updateUser,
   uploadBannerPicture,
@@ -23,5 +24,6 @@ router.put(
   upload.single('bannerPicture'),
   uploadBannerPicture
 )
+router.post('/follow-user/:userId', followUser)
 
 export default router
