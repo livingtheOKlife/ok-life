@@ -5,6 +5,7 @@ import upload from '../middleware/upload.middleware.js'
 import {
   followUser,
   getUser,
+  unfollowUser,
   updateUser,
   uploadBannerPicture,
   uploadProfilePicture,
@@ -25,5 +26,6 @@ router.put(
   uploadBannerPicture
 )
 router.post('/follow-user/:userId', followUser)
+router.post('/unfollow-user/:userId', unfollowUser)
 
 export default router
